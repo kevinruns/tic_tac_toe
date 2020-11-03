@@ -36,22 +36,21 @@ class TicTacToeBoard
     end
 
     @board[row - 1][col - 1] = xory
-
   end
 
   def check_for_winner
-
     winner = false
     %w[X O].each do |letter|
-      next unless @board[0].count(letter) == 3 || @board[1].count(letter) == 3 || @board[2].count(letter) == 3 ||
-                  @board.transpose[0].count(letter) == 3 || @board.transpose[1].count(letter) == 3 || @board.transpose[2].count(letter) == 3 ||
-                  @board[0][0] == letter && @board[1][1] == letter && @board[2][2] == letter
+      winner_rows = @board[0].count(letter) == 3 || @board[1].count(letter) == 3 || @board[2].count(letter) == 3
+      winner_columns = @board.transpose[0].count(letter) == 3 || @board.transpose[1].count(letter) == 3 ||
+                       @board.transpose[2].count(letter) == 3
+      winner_diag = @board[0][0] == letter && @board[1][1] == letter && @board[2][2] == letter
+      next unless winner_rows || winner_columns || winner_diag
 
       winner = true
     end
     winner
   end
-
 end
 
 play = TicTacToeBoard.new
@@ -65,7 +64,6 @@ player = player1
 count = 0
 
 until play.check_for_winner || count == 9
-
   count += 1
 
   puts "\n******************************************************************************************"
