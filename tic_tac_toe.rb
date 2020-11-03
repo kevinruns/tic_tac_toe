@@ -57,7 +57,7 @@ play = TicTacToeBoard.new
 
 print 'Enter X player name: '
 player1 = gets.chomp
-print 'Enter Y player name: '
+print 'Enter O player name: '
 player2 = gets.chomp
 
 player = player1
