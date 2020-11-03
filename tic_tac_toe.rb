@@ -44,7 +44,8 @@ class TicTacToeBoard
       winner_rows = @board[0].count(letter) == 3 || @board[1].count(letter) == 3 || @board[2].count(letter) == 3
       winner_columns = @board.transpose[0].count(letter) == 3 || @board.transpose[1].count(letter) == 3 ||
                        @board.transpose[2].count(letter) == 3
-      winner_diag = @board[0][0] == letter && @board[1][1] == letter && @board[2][2] == letter
+      winner_diag = @board[0][0] == letter && @board[1][1] == letter && @board[2][2] == letter ||
+                    @board[2][0] == letter && @board[1][1] == letter && @board[0][2] == letter
       next unless winner_rows || winner_columns || winner_diag
 
       winner = true
